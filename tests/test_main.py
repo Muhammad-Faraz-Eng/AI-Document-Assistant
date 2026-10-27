@@ -1,3 +1,4 @@
+import pytest
 from app.main import normalize_question
 
 def test_removes_surrounding_whitespaces():
@@ -13,3 +14,7 @@ def test_preserves_internal_spacing():
 def test_whitespace_only_question_becomes_empty():
     result = normalize_question("   ")
     assert result == "" 
+
+def test_rejects_none():
+    with pytest.raises(TypeError, match='question must be string'):
+        normalize_question(None)

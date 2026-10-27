@@ -1,4 +1,6 @@
 def normalize_question(question: str) -> str:
+    if not isinstance(question, str):
+        raise TypeError("question must be string")
     return question.strip()
 
 
